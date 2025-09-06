@@ -8,7 +8,7 @@ const BoxPlot = ({ data }) => {
 
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
-    
+
     // Limpar canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -59,7 +59,7 @@ const BoxPlot = ({ data }) => {
       const value = yMin + (yMax - yMin) * (i / ySteps)
       const y = scaleY(value)
       ctx.fillText(Math.round(value).toLocaleString(), padding - 10, y + 4)
-      
+
       // Linhas de grade
       if (i > 0 && i < ySteps) {
         ctx.strokeStyle = '#f3f4f6'
@@ -95,29 +95,29 @@ const BoxPlot = ({ data }) => {
 
       // Linha superior (max)
       ctx.beginPath()
-      ctx.moveTo(x - boxWidth/4, yMax)
-      ctx.lineTo(x + boxWidth/4, yMax)
+      ctx.moveTo(x - boxWidth / 4, yMax)
+      ctx.lineTo(x + boxWidth / 4, yMax)
       ctx.stroke()
 
       // Linha inferior (min)
       ctx.beginPath()
-      ctx.moveTo(x - boxWidth/4, yMin)
-      ctx.lineTo(x + boxWidth/4, yMin)
+      ctx.moveTo(x - boxWidth / 4, yMin)
+      ctx.lineTo(x + boxWidth / 4, yMin)
       ctx.stroke()
 
       // Caixa (Q1 a Q3)
       ctx.fillStyle = 'rgba(34, 197, 94, 0.3)'
       ctx.strokeStyle = '#22c55e'
       ctx.lineWidth = 2
-      ctx.fillRect(x - boxWidth/2, yQ3, boxWidth, yQ1 - yQ3)
-      ctx.strokeRect(x - boxWidth/2, yQ3, boxWidth, yQ1 - yQ3)
+      ctx.fillRect(x - boxWidth / 2, yQ3, boxWidth, yQ1 - yQ3)
+      ctx.strokeRect(x - boxWidth / 2, yQ3, boxWidth, yQ1 - yQ3)
 
       // Mediana
       ctx.strokeStyle = '#dc2626'
       ctx.lineWidth = 2
       ctx.beginPath()
-      ctx.moveTo(x - boxWidth/2, yMedian)
-      ctx.lineTo(x + boxWidth/2, yMedian)
+      ctx.moveTo(x - boxWidth / 2, yMedian)
+      ctx.lineTo(x + boxWidth / 2, yMedian)
       ctx.stroke()
     })
 
@@ -126,20 +126,22 @@ const BoxPlot = ({ data }) => {
     ctx.font = '11px Inter'
     ctx.textAlign = 'center'
     data.forEach((item, index) => {
-      if (index % 3 === 0 || index === data.length - 1) { // Mostrar apenas alguns labels
+      /*if (index % 2 === 0 || index === data.length - 1) { // Mostrar apenas alguns labels
         const x = scaleX(index)
         ctx.fillText(item.period, x, canvas.height - padding + 20)
-      }
+      }*/
+      const x = scaleX(index)
+      ctx.fillText(item.period, x, canvas.height - padding + 20)
     })
 
     // Título dos eixos
     ctx.fillStyle = '#374151'
     ctx.font = '14px Inter'
     ctx.textAlign = 'center'
-    
+
     // Título eixo X
     ctx.fillText('Período de Semeadura', canvas.width / 2, canvas.height - 10)
-    
+
     // Título eixo Y (rotacionado)
     ctx.save()
     ctx.translate(20, canvas.height / 2)

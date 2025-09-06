@@ -1,6 +1,7 @@
 {
   "name": "planejador-semeadura-frontend",
   "version": "1.0.0",
+  "type": "module",
   "description": "Frontend do Planejador de Semeadura",
   "scripts": {
     "dev": "vite",

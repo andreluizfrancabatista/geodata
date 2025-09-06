@@ -170,6 +170,21 @@ const Cadastro = () => {
               
               <form onSubmit={handleTalhaoSubmit} className="space-y-4">
                 <div>
+                  <label htmlFor="id" className="block text-sm font-medium text-gray-700 mb-2">
+                    ID do Talhão
+                  </label>
+                  <input
+                    type="text"
+                    id="id"
+                    value={talhaoForm.id}
+                    onChange={(e) => setTalhaoForm({...talhaoForm, id: e.target.value})}
+                    placeholder="Ex: T001, 4, A1..."
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-agro-green-500 focus:border-agro-green-500"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">Identificador único para o talhão</p>
+                </div>
+
+                <div>
                   <label htmlFor="latitude" className="block text-sm font-medium text-gray-700 mb-2">
                     Latitude
                   </label>

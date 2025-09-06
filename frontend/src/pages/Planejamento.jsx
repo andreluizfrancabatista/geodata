@@ -3,7 +3,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 import { Bar } from 'react-chartjs-2'
 import BoxPlot from '../components/BoxPlot'
 import api from '../services/api'
-import { Loader, TrendingUp } from 'lucide-react'
+import { Loader, TrendingUp, ExternalLink } from 'lucide-react'
 
 // Registrar componentes do Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
@@ -122,13 +122,10 @@ const Planejamento = () => {
 
   const ensoChartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top'
-      },
-      title: {
-        display: true,
-        text: 'Probabilidades de Fenômenos Climáticos ENSO (%)'
       }
     },
     scales: {
@@ -143,7 +140,7 @@ const Planejamento = () => {
       x: {
         title: {
           display: true,
-          text: 'Estação'
+          text: 'Período'
         }
       }
     }
@@ -165,9 +162,9 @@ const Planejamento = () => {
         <p className="text-gray-600">Configure os parâmetros e visualize as análises de produtividade</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
         {/* Coluna de Inputs */}
-        <div className="space-y-6">
+        <div className="space-y-6 lg:col-span-2">
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
             <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
               <TrendingUp className="h-5 w-5 mr-2 text-agro-green-600" />
@@ -257,10 +254,22 @@ const Planejamento = () => {
         </div>
 
         {/* Coluna de Outputs */}
-        <div className="space-y-6">
+        <div className="space-y-6 lg:col-span-3">
           {/* Gráfico ENSO */}
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Fenômenos Climáticos ENSO</h3>
+            {/*https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/#:~:text=ASO*/}
+            <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+              Probabilidades ENSO (%) - Agosto 2025
+              <a
+                href="https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-2 text-blue-600 hover:text-blue-800 transition-colors"
+                title="Mais informações sobre ENSO"
+              >
+                <ExternalLink className="h-5 w-5" />
+              </a>
+            </h3>
             {ensoData.length > 0 ? (
               <div className="h-64">
                 <Bar data={ensoChartData} options={ensoChartOptions} />
@@ -274,7 +283,7 @@ const Planejamento = () => {
 
           {/* BoxPlot de Produtividade */}
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Produtividade Potencial</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Produtividade Potencial (SC/ha)</h3>
             {loadingProdutividade ? (
               <div className="h-64 flex items-center justify-center">
                 <Loader className="h-6 w-6 animate-spin text-agro-green-600" />

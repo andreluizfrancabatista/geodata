@@ -10,7 +10,7 @@ MVP de uma aplicação web para planejamento de semeadura agrícola com visualiz
 - **BoxPlot de Produtividade**: Visualização da produtividade potencial por período
 
 ### 📝 Cadastros
-- **Talhões**: Latitude, longitude e tipo de solo
+- **Talhões**: ID, Latitude, longitude e tipo de solo
 - **Culturas**: Gerenciamento de culturas disponíveis
 
 ### ⚠️ Disclaimer
@@ -101,10 +101,10 @@ id,nome
 **`data/enso.csv`**
 ```csv
 Season,La Niña,Neutral,El Niño
-DJF,25,45,30
-MAM,30,40,30
-JJA,35,35,30
-SON,20,50,30
+Ago-Out,30,68,2
+Set-Nov,39,57,4
+Out-Dez,44,49,7
+Nov-Jan,42,50,8
 ```
 
 ## 🔧 API Endpoints
@@ -186,14 +186,6 @@ A produtividade é calculada com base em:
 - Adicionar autenticação e autorização
 - Migrar para banco de dados robusto
 - Consultar especialistas agronômicos
-
-## 🤝 Contribuição
-
-1. Fork o projeto
-2. Crie uma branch para sua feature
-3. Commit suas mudanças
-4. Push para a branch
-5. Abra um Pull Request
 
 ## 📄 Licença
 

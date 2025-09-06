@@ -24,8 +24,8 @@ const Disclaimer = () => {
               Aviso Importante
             </h3>
             <p className="text-agro-yellow-800 text-lg font-medium">
-              Esta aplicação é um <strong>MVP (Minimum Viable Product)</strong> e serve 
-              <strong> somente para demonstração</strong> de funcionalidades e conceitos.
+              Esta aplicação é um <strong>MVP (Minimum Viable Product)</strong> e serve
+              <strong> somente para demonstração</strong> de possíveis funcionalidades e conceitos.
             </p>
           </div>
         </div>
@@ -92,7 +92,7 @@ const Disclaimer = () => {
           <Code className="h-6 w-6 text-agro-green-600 mr-3" />
           <h3 className="text-xl font-semibold text-gray-900">Informações Técnicas</h3>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <h4 className="font-semibold text-gray-800 mb-2">Frontend</h4>
@@ -104,7 +104,7 @@ const Disclaimer = () => {
               <li>• React Router para navegação</li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-semibold text-gray-800 mb-2">Backend</h4>
             <ul className="text-sm text-gray-600 space-y-1">
@@ -124,28 +124,37 @@ const Disclaimer = () => {
           <Database className="h-6 w-6 text-agro-brown-600 mr-3" />
           <h3 className="text-xl font-semibold text-gray-900">Fontes de Dados</h3>
         </div>
-        
+
         <div className="space-y-4">
           <div>
             <h4 className="font-semibold text-gray-800 mb-2">Dados ENSO (El Niño/La Niña)</h4>
             <p className="text-gray-600 text-sm">
-              Probabilidades baseadas em padrões históricos simplificados. 
-              Para uso em produção, recomenda-se integração com dados do INPE, NOAA ou outras fontes oficiais.
+              Dados reais obtidos a partir da base de dados da
+              <a
+                href="https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-2 text-blue-600 hover:text-blue-800 transition-colors"
+                title="Mais informações sobre ENSO"
+              >
+              International Research Institute for Climate and Society (IRI)
+              </a>. O boletim de previsão fornece um resumo mensal sobre a situação do 
+              El Niño, La Niña e da Oscilação Sul (ENSO), com base no índice NINO3.4.
             </p>
           </div>
-          
+
           <div>
             <h4 className="font-semibold text-gray-800 mb-2">Produtividade das Culturas</h4>
             <p className="text-gray-600 text-sm">
-              Valores simulados com base em médias aproximadas. 
-              Para aplicações reais, deve-se utilizar dados da CONAB, IBGE ou pesquisas agronômicas específicas.
+              Valores aleatórios simulados com base em médias aproximadas.
+              Para aplicações reais, deve-se utilizar dados ou pesquisas agronômicas específicas.
             </p>
           </div>
-          
+
           <div>
             <h4 className="font-semibold text-gray-800 mb-2">Dados de Solo e Localização</h4>
             <p className="text-gray-600 text-sm">
-              Informações simplificadas. Em produção, integrar com sistemas de SIG, 
+              Informações simplificadas. Em produção, integrar com sistemas de SIG,
               dados do INCRA e mapas pedológicos detalhados.
             </p>
           </div>
