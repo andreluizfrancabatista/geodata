@@ -72,7 +72,7 @@ const generateProductivityData = (cultura, ciclo, fenomeno) => {
   const currentYear = new Date().getFullYear();
   
   // Gerar períodos de 10 em 10 dias
-  for (let month = 1; month <= 12; month++) {
+  for (let month = 8; month <= 12; month++) {
     for (let day = 10; day <= 30; day += 10) {
       if (month === 2 && day === 30) continue; // Pular 30 de fevereiro
       periods.push(`${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}`);
@@ -139,15 +139,22 @@ app.get('/api/talhoes', async (req, res) => {
 // POST - Adicionar Talhão
 app.post('/api/talhoes', async (req, res) => {
   try {
-    const { latitude, longitude, tipoSolo } = req.body;
+    const { id, latitude, longitude, tipoSolo } = req.body;
     
-    if (!latitude || !longitude || !tipoSolo) {
+    if (!id || !latitude || !longitude || !tipoSolo) {
       return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
     }
 
     const talhoes = await readCSV('talhoes.csv');
+    
+    // Verificar se o ID já existe
+    const idExistente = talhoes.find(talhao => talhao.id === id.toString());
+    if (idExistente) {
+      return res.status(400).json({ error: 'ID do talhão já existe. Escolha outro ID.' });
+    }
+
     const novoTalhao = {
-      id: Date.now().toString(),
+      id: id.toString(),
       latitude: latitude.toString(),
       longitude: longitude.toString(),
       tipoSolo: tipoSolo.toString()
