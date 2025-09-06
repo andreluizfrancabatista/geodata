@@ -7,7 +7,7 @@ import Disclaimer from './pages/Disclaimer'
 
 function App() {
   return (
-    <Router basename='/geodata'>
+    <Router>
       <Layout>
         <Routes>
           <Route path="/" element={<Planejamento />} />
