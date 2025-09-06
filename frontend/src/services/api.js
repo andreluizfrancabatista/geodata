@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // Configuração base da API
 const api = axios.create({
-  baseURL: import.meta.env.PROD ? '/api' : 'http://localhost:3001/api',
+  baseURL: import.meta.env.PROD ? '/geodata/api' : 'http://localhost:3001/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'
